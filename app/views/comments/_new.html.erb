@@ -1,0 +1,79 @@
+<%= form_with model: [post, Comment.new], class: "comment-form" do |form| %>
+  <div class="comment-form__field">
+    <%= form.label :content, "Add a comment", class: "comment-form__label" %>
+    <%= form.text_area :content, 
+        class: "comment-form__textarea",
+        placeholder: "Write your comment here...",
+        rows: 3 %>
+  </div>
+  <div class="comment-form__actions">
+    <%= form.submit "Post comment", class: "post-card__button" %>
+  </div>
+<% end %>
+
+<style>
+.comment-form {
+  background: var(--card-bg, white);
+  border-radius: 6px;
+  box-shadow: 0 1px 2px var(--card-shadow, rgba(0, 0, 0, 0.1));
+  padding: 1rem;
+}
+
+.comment-form__field {
+  margin-bottom: 1rem;
+}
+
+.comment-form__label {
+  display: block;
+  color: var(--text-primary, #333);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-size: 0.9375rem;
+}
+
+.comment-form__textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color, #ddd);
+  border-radius: 4px;
+  background: var(--input-bg, #fff);
+  color: var(--text-primary, #333);
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  resize: vertical;
+  min-height: 80px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.comment-form__textarea:focus {
+  outline: none;
+  border-color: var(--button-bg, #007bff);
+  box-shadow: 0 0 0 2px var(--button-bg-hover, rgba(0, 123, 255, 0.25));
+}
+
+.comment-form__actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (prefers-color-scheme: dark) {
+  .comment-form {
+    background: var(--card-bg, #1a1a1a);
+  }
+
+  .comment-form__label {
+    color: var(--text-primary, #fff);
+  }
+
+  .comment-form__textarea {
+    background: var(--input-bg, #242424);
+    border-color: var(--border-color, #333);
+    color: var(--text-primary, #fff);
+  }
+
+  .comment-form__textarea:focus {
+    border-color: var(--button-bg, #0d6efd);
+    box-shadow: 0 0 0 2px var(--button-bg-hover, rgba(13, 110, 253, 0.25));
+  }
+}
+</style>

@@ -1,0 +1,48 @@
+<div class="comments-section" data-controller="comments">
+  <h2 class="comments-section__title">Comments</h2>
+
+  <div id="comments" class="comments-section__list">
+    <%= render @post.comments.top_level %>
+  </div>
+
+  <div class="comments-section__new">
+    <%= render "comments/new", post: @post %>
+  </div>
+</div>
+
+<style>
+.comments-section {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color, #eee);
+}
+
+.comments-section__title {
+  font-size: 1.25rem;
+  color: var(--text-primary, #333);
+  margin-bottom: 1rem;
+}
+
+.comments-section__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.comments-section__new {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color, #eee);
+}
+
+@media (prefers-color-scheme: dark) {
+  .comments-section {
+    border-top-color: var(--border-color, #333);
+  }
+  
+  .comments-section__new {
+    border-top-color: var(--border-color, #333);
+  }
+}
+</style>

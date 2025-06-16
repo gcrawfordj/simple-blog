@@ -1,0 +1,102 @@
+<div id="<%= dom_id(comment) %>" class="comment-card">
+  <div class="comment-card__content">
+    <%= comment.content %>
+  </div>
+  <div class="comment-card__meta">
+    <span class="comment-card__timestamp">
+      <%= time_tag comment.updated_at, "data-local" => "time-ago" %>
+    </span>
+    <button class="post-card__button post-card__button--small" data-action="click->comments#toggleReplyForm" data-comment-id="<%= comment.id %>">
+      Reply
+    </button>
+  </div>
+
+  <div id="reply-form-<%= comment.id %>" class="comment-card__reply-form" style="display: none;">
+    <%= form_with model: [comment.post, Comment.new], url: reply_post_comment_path(comment.post, comment), class: "comment-form comment-form--reply" do |form| %>
+      <div class="comment-form__field">
+        <%= form.text_area :content, 
+            class: "comment-form__textarea",
+            placeholder: "Write your reply...",
+            rows: 2 %>
+      </div>
+      <div class="comment-form__actions">
+        <%= form.submit "Post reply", class: "post-card__button" %>
+      </div>
+    <% end %>
+  </div>
+
+  <% if comment.replies.any? %>
+    <div class="comment-card__replies">
+      <%= render comment.replies %>
+    </div>
+  <% end %>
+</div>
+
+<style>
+.comment-card {
+  background: var(--card-bg, white);
+  border-radius: 6px;
+  box-shadow: 0 1px 2px var(--card-shadow, rgba(0, 0, 0, 0.1));
+  padding: 0.75rem;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.comment-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 3px var(--card-shadow-hover, rgba(0, 0, 0, 0.15));
+}
+
+.comment-card__content {
+  color: var(--text-secondary, #666);
+  line-height: 1.4;
+  margin-bottom: 0.25rem;
+  font-size: 0.9375rem;
+}
+
+.comment-card__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment-card__timestamp {
+  color: var(--text-muted, #888);
+  font-size: 0.8125rem;
+}
+
+.post-card__button--small {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8125rem;
+  height: 1.75rem;
+}
+
+.comment-card__replies {
+  margin-top: 0.75rem;
+  margin-left: 1.5rem;
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--border-color, #eee);
+}
+
+.comment-form--reply {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .comment-card {
+    background: var(--card-bg, #1a1a1a);
+  }
+  
+  .comment-card__content {
+    color: var(--text-secondary, #cccccc);
+  }
+  
+  .comment-card__timestamp {
+    color: var(--text-muted, #888888);
+  }
+
+  .comment-card__replies {
+    border-left-color: var(--border-color, #333);
+  }
+}
+</style>

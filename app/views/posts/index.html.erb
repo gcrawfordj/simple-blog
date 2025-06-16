@@ -1,0 +1,37 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Simple Blog" %>
+
+<div class="page-header">
+  <h1>Simple Blog</h1>
+</div>
+
+<%= link_to "New post", new_post_path, class: "post-card__button" %>
+
+<div id="posts">
+  <% @posts.each do |post| %>
+    <%= render post %>
+  <% end %>
+</div>
+
+<style>
+.page-header {
+  text-align: center;
+  margin: 2rem 0 3rem;
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary, #333);
+  margin: 0;
+  padding: 0;
+  letter-spacing: -0.5px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .page-header h1 {
+    color: var(--text-primary, #fff);
+  }
+}
+</style>

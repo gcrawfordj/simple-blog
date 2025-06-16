@@ -1,0 +1,17 @@
+<%= turbo_stream_from @post %>
+
+<p style="color: green"><%= notice %></p>
+
+<%= render @post %>
+
+<div class="post-actions">
+  <%= link_to "Back to posts", posts_path, class: "post-card__button" %>
+</div>
+
+<%= render "comments/comments", post: @post %>
+
+<style>
+.post-actions {
+  margin: 1.5rem 0;
+}
+</style>
