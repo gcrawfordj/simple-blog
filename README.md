@@ -52,6 +52,12 @@ This project was built using:
 - Interactive UI elements with Stimulus
 - Threaded comments for better discussion flow
 
+## Screenshots
+
+<img width="617" alt="Screenshot 2025-06-16 at 7 48 21 PM" src="https://github.com/user-attachments/assets/7dc10a1e-eef8-491d-bac3-d530ba0a0f44" />
+
+<img width="598" alt="Screenshot 2025-06-16 at 7 48 33 PM" src="https://github.com/user-attachments/assets/3e4ba5ca-e229-4b76-a30a-d9c348ca5f94" />
+
 ## Credits
 
 This project was inspired by the [Rails 8 Demo](https://www.youtube.com/watch?v=X_Hw9P1iZfQ) and developed with assistance from CursorAI.
